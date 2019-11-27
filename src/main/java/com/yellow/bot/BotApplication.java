@@ -44,6 +44,7 @@ public class BotApplication implements CommandLineRunner {
 			DialogFlowQuery dialogFlowQuery = new DialogFlowQuery(query);
 			System.out.println(dialogFlowQuery);
 			String response = intentService.handleQuery(dialogFlowQuery);
+
 			System.out.println(response);
 			System.out.println("Want to Continue : ? Press Y/N");
 			input = scanner.nextLine();
