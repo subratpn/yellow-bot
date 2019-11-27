@@ -2,6 +2,7 @@ package com.yellow.bot;
 
 import com.yellow.bot.model.DialogFlowQuery;
 import com.yellow.bot.service.abstracts.IntentService;
+import org.json.JSONObject;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -34,18 +35,19 @@ public class BotApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		String input = "Y";
+
 		Scanner scanner = new Scanner(System.in);
+		System.out.println("Press Y/N to Start/End");
+		String input = scanner.nextLine();
 
 		while(input.equalsIgnoreCase("Y")){
 			System.out.println("Enter Your Query : \n");
-			//Hello
 			String query = scanner.nextLine();
 			DialogFlowQuery dialogFlowQuery = new DialogFlowQuery(query);
-			System.out.println(dialogFlowQuery);
 			String response = intentService.handleQuery(dialogFlowQuery);
-
-			System.out.println(response);
+			JSONObject jsonObject = new JSONObject(response);
+			response = jsonObject.getJSONObject("result").getJSONObject("fulfillment").getString("speech");
+			System.err.println(response);
 			System.out.println("Want to Continue : ? Press Y/N");
 			input = scanner.nextLine();
 		}

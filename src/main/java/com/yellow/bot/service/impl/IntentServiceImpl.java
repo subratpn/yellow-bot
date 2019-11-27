@@ -17,7 +17,6 @@ public class IntentServiceImpl implements IntentService {
     @Override
     public String handleQuery(DialogFlowQuery dialogFlowQuery) {
 
-        System.out.println("Dialog Query : "+dialogFlowQuery);
         String clientAccessToken = Constants.ACCESS_TOKEN;
         RestTemplate restTemplate = new RestTemplate();
 
