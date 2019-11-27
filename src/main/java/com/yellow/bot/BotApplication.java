@@ -39,6 +39,7 @@ public class BotApplication implements CommandLineRunner {
 
 		while(input.equalsIgnoreCase("Y")){
 			System.out.println("Enter Your Query : \n");
+			//Hello
 			String query = scanner.nextLine();
 			DialogFlowQuery dialogFlowQuery = new DialogFlowQuery(query);
 			System.out.println(dialogFlowQuery);
